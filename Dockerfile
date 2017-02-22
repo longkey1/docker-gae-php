@@ -1,13 +1,10 @@
-FROM debian:latest
+FROM google/cloud-sdk:latest
 
-RUN apt-get -y update && apt-get -y install curl git wget build-essential lsb-release unzip python-openssl
+RUN apt-get -y install curl
 
-# Install the Google Cloud SDK.
+# Install PHP Extensions
+RUN apt-get -y install php5-curl
 
-RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-RUN apt-get -y update && apt-get -y install google-cloud-sdk
-
-# Install the Google AppEngine SDK for PHP
-
-RUN apt-get install google-cloud-sdk-app-engine-php
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
+RUN mv /usr/local/bin/composer.phar /usr/local/bin/composer
