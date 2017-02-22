@@ -10,4 +10,4 @@ RUN apt-get -y update && apt-get -y install google-cloud-sdk
 
 # Install the Google AppEngine SDK for PHP
 
-RUN gcloud components install app-engine-php
+RUN apt-get install google-cloud-sdk-app-engine-php
