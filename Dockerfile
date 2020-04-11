@@ -1,10 +1,4 @@
-FROM google/cloud-sdk:latest
-
-# Fix frontend not set error
-ARG DEBIAN_FRONTEND=noninteractive
-
-# Install deploy tools
-RUN apt-get -y install curl wget git gettext apt-utils build-essential
+FROM longkey1/gcp:latest
 
 # Add PPA ondrej/php
 RUN apt-get -y  install apt-transport-https lsb-release ca-certificates
